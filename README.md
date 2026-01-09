@@ -15,13 +15,6 @@ Application web de gestion de bibliothèque développée avec Node.js, Express, 
 - PostgreSQL (v12 ou supérieur)
 - npm ou yarn
 
-## 🔧 Installation
-
-### 1. Cloner ou télécharger le projet
-
-```bash
-cd bibliotheque-app
-```
 
 ### 2. Installer les dépendances
 
@@ -71,7 +64,6 @@ DB_DATABASE=bibliotheque_db
 PORT=3000
 ```
 
-**Note** : Remplacez les valeurs par vos propres identifiants PostgreSQL.
 
 ## 🏃 Lancement de l'application
 
@@ -239,34 +231,14 @@ bibliotheque-app/
 - Photos de couverture des livres
 - Commentaires et notes
 
-## 🐛 Résolution de problèmes
+`
 
-### Erreur de connexion à la base de données
 
-Vérifiez que :
-- PostgreSQL est démarré
-- Les identifiants dans `.env` sont corrects
-- La base de données `bibliotheque_db` existe
-- Les tables ont été créées avec `schema.sql`
 
-### Port déjà utilisé
 
-Changez le port dans le fichier `.env` :
-```env
-PORT=3001
-```
-
-### Erreurs de modules
-
-Supprimez `node_modules` et `package-lock.json`, puis réinstallez :
-```bash
-rm -rf node_modules package-lock.json
-npm install
 ```
 <img width="1366" height="728" alt="Accueil - Bibliothèque - Google Chrome 09_01_2026 23_51_29" src="https://github.com/user-attachments/assets/a2df9a63-d061-45d1-bb0b-e398a554369c" />
 
+<img width="1366" height="728" alt="Ajouter auteur - Google Chrome 09_01_2026 23_52_19" src="https://github.com/user-attachments/assets/0d225ea3-4327-4cbc-9338-ba10d4cdda3e" />
 
----
-
-**Note** : Assurez-vous d'avoir configuré correctement PostgreSQL et les variables d'environnement avant de lancer l'application.
 
