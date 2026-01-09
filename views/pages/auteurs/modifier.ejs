@@ -1,0 +1,46 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navigation') %>
+<main class="container">
+    <h1>Modifier un auteur</h1>
+
+    <% if (typeof error !== 'undefined') { %>
+        <div class="alert alert-error">
+            <strong>Erreur :</strong> <%= error.message || error %>
+        </div>
+    <% } %>
+
+    <div class="card">
+        <form method="POST" action="/auteurs/<%= auteur.id %>/modifier">
+            <div class="form-group">
+                <label for="nom">Nom *</label>
+                <input type="text" id="nom" name="nom" required value="<%= auteur.nom %>">
+            </div>
+
+            <div class="form-group">
+                <label for="prenom">Prénom *</label>
+                <input type="text" id="prenom" name="prenom" required value="<%= auteur.prenom %>">
+            </div>
+
+            <div class="form-group">
+                <label for="date_naissance">Date de naissance</label>
+                <input type="date" id="date_naissance" name="date_naissance" value="<%= auteur.date_naissance ? new Date(auteur.date_naissance).toISOString().split('T')[0] : '' %>">
+            </div>
+
+            <div class="form-group">
+                <label for="nationalite">Nationalité</label>
+                <input type="text" id="nationalite" name="nationalite" value="<%= auteur.nationalite || '' %>">
+            </div>
+
+            <div class="form-group">
+                <label for="biographie">Biographie</label>
+                <textarea id="biographie" name="biographie" rows="5"><%= auteur.biographie || '' %></textarea>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <button type="submit" class="btn btn-success">Enregistrer</button>
+                <a href="/auteurs/<%= auteur.id %>" class="btn" style="margin-left: 10px;">Annuler</a>
+            </div>
+        </form>
+    </div>
+</main>
+<%- include('../../partials/footer') %>

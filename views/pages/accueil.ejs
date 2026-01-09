@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navigation') %>
+<main class="container">
+    <div class="card">
+        <h1>Bienvenue dans la Bibliothèque</h1>
+        <p>Gérez votre collection de livres et d'auteurs facilement.</p>
+        
+        <div style="margin-top: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div class="card">
+                <h2>Auteurs</h2>
+                <p>Consultez, ajoutez et modifiez les auteurs de votre bibliothèque.</p>
+                <a href="/auteurs" class="btn">Voir les auteurs</a>
+                <a href="/auteurs/ajouter" class="btn btn-success" style="margin-left: 10px;">Ajouter un auteur</a>
+            </div>
+            
+            <div class="card">
+                <h2>Livres</h2>
+                <p>Consultez, ajoutez et modifiez les livres de votre bibliothèque.</p>
+                <a href="/livres" class="btn">Voir les livres</a>
+                <a href="/livres/ajouter" class="btn btn-success" style="margin-left: 10px;">Ajouter un livre</a>
+            </div>
+        </div>
+    </div>
+</main>
+<%- include('../partials/footer') %>

@@ -1,0 +1,34 @@
+import express from 'express';
+import path from 'path';
+import dotenv from 'dotenv';
+import auteurRoutes from './routes/auteurRoutes.js';
+import livreRoutes  from './routes/livreRoutes.js';
+
+dotenv.config();
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// moteur EJS
+app.set('view engine','ejs');
+app.set('views', path.resolve('views'));
+
+// middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended:true }));
+app.use(express.static(path.resolve('public')));
+
+// routes
+app.get('/', (_,res) =>
+  res.render('pages/accueil',{ title:'Accueil - Bibliothèque' })
+);
+app.use('/auteurs', auteurRoutes);
+app.use('/livres',  livreRoutes);
+
+// 404
+app.use((_,res) =>
+  res.status(404).render('pages/404',{ title:'Page non trouvée' })
+);
+
+app.listen(PORT, () =>
+  console.log(`Écoute sur http://localhost:${PORT}`)
+);

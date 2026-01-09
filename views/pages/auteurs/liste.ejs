@@ -1,0 +1,44 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navigation') %>
+<main class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h1>Liste des auteurs</h1>
+        <a href="/auteurs/ajouter" class="btn btn-success">Ajouter un auteur</a>
+    </div>
+
+    <% if (typeof auteurs !== 'undefined' && auteurs.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date de naissance</th>
+                    <th>Nationalité</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% auteurs.forEach(auteur => { %>
+                    <tr>
+                        <td><%= auteur.nom %></td>
+                        <td><%= auteur.prenom %></td>
+                        <td class="format-date"><%= auteur.date_naissance || '-' %></td>
+                        <td><%= auteur.nationalite || '-' %></td>
+                        <td>
+                            <a href="/auteurs/<%= auteur.id %>" class="btn" style="padding: 5px 10px; font-size: 0.9rem;">Voir</a>
+                            <a href="/auteurs/<%= auteur.id %>/modifier" class="btn" style="padding: 5px 10px; font-size: 0.9rem;">Modifier</a>
+                            <form action="/auteurs/<%= auteur.id %>/supprimer" method="POST" style="display: inline;">
+                                <button type="submit" class="btn btn-danger" style="padding: 5px 10px; font-size: 0.9rem;" onclick="return confirm('Êtes-vous sûr ?')">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <div class="card">
+            <p>Aucun auteur trouvé. <a href="/auteurs/ajouter">Ajouter le premier auteur</a></p>
+        </div>
+    <% } %>
+</main>
+<%- include('../../partials/footer') %>

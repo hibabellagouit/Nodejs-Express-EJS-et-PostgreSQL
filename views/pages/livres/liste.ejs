@@ -1,0 +1,54 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navigation') %>
+<main class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h1>Liste des livres</h1>
+        <a href="/livres/ajouter" class="btn btn-success">Ajouter un livre</a>
+    </div>
+
+    <% if (typeof searchTerm !== 'undefined' && searchTerm) { %>
+        <div class="alert" style="background-color: #d1ecf1; color: #0c5460; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+            Résultats de recherche pour : "<strong><%= searchTerm %></strong>"
+        </div>
+    <% } %>
+
+    <% if (typeof livres !== 'undefined' && livres.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>ISBN</th>
+                    <th>Année</th>
+                    <th>Genre</th>
+                    <th>Disponible</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% livres.forEach(livre => { %>
+                    <tr>
+                        <td><%= livre.titre %></td>
+                        <td><%= livre.auteur_prenom %> <%= livre.auteur_nom %></td>
+                        <td><%= livre.isbn || '-' %></td>
+                        <td><%= livre.annee_publication || '-' %></td>
+                        <td><%= livre.genre || '-' %></td>
+                        <td><%= livre.disponible ? 'Oui' : 'Non' %></td>
+                        <td>
+                            <a href="/livres/<%= livre.id %>" class="btn" style="padding: 5px 10px; font-size: 0.9rem;">Voir</a>
+                            <a href="/livres/<%= livre.id %>/modifier" class="btn" style="padding: 5px 10px; font-size: 0.9rem;">Modifier</a>
+                            <form action="/livres/<%= livre.id %>/supprimer" method="POST" style="display: inline;">
+                                <button type="submit" class="btn btn-danger" style="padding: 5px 10px; font-size: 0.9rem;" onclick="return confirm('Êtes-vous sûr ?')">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <div class="card">
+            <p>Aucun livre trouvé. <a href="/livres/ajouter">Ajouter le premier livre</a></p>
+        </div>
+    <% } %>
+</main>
+<%- include('../../partials/footer') %>

@@ -1,0 +1,60 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navigation') %>
+<main class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h1><%= livre.titre %></h1>
+        <div>
+            <a href="/livres/<%= livre.id %>/modifier" class="btn">Modifier</a>
+            <a href="/livres" class="btn" style="margin-left: 10px;">Retour à la liste</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Informations</h2>
+        <table>
+            <tr>
+                <th>Titre</th>
+                <td><%= livre.titre %></td>
+            </tr>
+            <tr>
+                <th>Auteur</th>
+                <td>
+                    <% if (livre.auteur_nom) { %>
+                        <a href="/auteurs/<%= livre.auteur_id %>"><%= livre.auteur_prenom %> <%= livre.auteur_nom %></a>
+                    <% } else { %>
+                        -
+                    <% } %>
+                </td>
+            </tr>
+            <% if (livre.isbn) { %>
+                <tr>
+                    <th>ISBN</th>
+                    <td><%= livre.isbn %></td>
+                </tr>
+            <% } %>
+            <% if (livre.annee_publication) { %>
+                <tr>
+                    <th>Année de publication</th>
+                    <td><%= livre.annee_publication %></td>
+                </tr>
+            <% } %>
+            <% if (livre.genre) { %>
+                <tr>
+                    <th>Genre</th>
+                    <td><%= livre.genre %></td>
+                </tr>
+            <% } %>
+            <tr>
+                <th>Disponible</th>
+                <td><%= livre.disponible ? 'Oui' : 'Non' %></td>
+            </tr>
+            <% if (livre.resume) { %>
+                <tr>
+                    <th>Résumé</th>
+                    <td><%= livre.resume %></td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+</main>
+<%- include('../../partials/footer') %>

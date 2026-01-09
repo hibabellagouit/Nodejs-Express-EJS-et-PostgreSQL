@@ -1,0 +1,68 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navigation') %>
+<main class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h1><%= auteur.prenom %> <%= auteur.nom %></h1>
+        <div>
+            <a href="/auteurs/<%= auteur.id %>/modifier" class="btn">Modifier</a>
+            <a href="/auteurs" class="btn" style="margin-left: 10px;">Retour à la liste</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Informations</h2>
+        <table>
+            <tr>
+                <th>Nom complet</th>
+                <td><%= auteur.prenom %> <%= auteur.nom %></td>
+            </tr>
+            <% if (auteur.date_naissance) { %>
+                <tr>
+                    <th>Date de naissance</th>
+                    <td class="format-date"><%= auteur.date_naissance %></td>
+                </tr>
+            <% } %>
+            <% if (auteur.nationalite) { %>
+                <tr>
+                    <th>Nationalité</th>
+                    <td><%= auteur.nationalite %></td>
+                </tr>
+            <% } %>
+            <% if (auteur.biographie) { %>
+                <tr>
+                    <th>Biographie</th>
+                    <td><%= auteur.biographie %></td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+
+    <% if (typeof livres !== 'undefined' && livres.length > 0) { %>
+        <div class="card" style="margin-top: 20px;">
+            <h2>Livres de cet auteur (<%= livres.length %>)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Année</th>
+                        <th>Genre</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% livres.forEach(livre => { %>
+                        <tr>
+                            <td><%= livre.titre %></td>
+                            <td><%= livre.annee_publication || '-' %></td>
+                            <td><%= livre.genre || '-' %></td>
+                            <td>
+                                <a href="/livres/<%= livre.id %>" class="btn" style="padding: 5px 10px; font-size: 0.9rem;">Voir</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>
+</main>
+<%- include('../../partials/footer') %>

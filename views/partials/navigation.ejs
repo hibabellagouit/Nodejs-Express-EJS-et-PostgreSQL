@@ -1,0 +1,15 @@
+<nav class="navigation">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0;">
+            <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;">
+                <li><a href="/" class="btn">Accueil</a></li>
+                <li><a href="/auteurs" class="btn">Auteurs</a></li>
+                <li><a href="/livres" class="btn">Livres</a></li>
+            </ul>
+            <form action="/livres/recherche" method="GET" style="display: flex; gap: 10px;">
+                <input type="search" name="q" placeholder="Rechercher un livre..." value="<%= typeof searchTerm !== 'undefined' ? searchTerm : '' %>" style="padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                <button type="submit" class="btn">Rechercher</button>
+            </form>
+        </div>
+    </div>
+</nav>
