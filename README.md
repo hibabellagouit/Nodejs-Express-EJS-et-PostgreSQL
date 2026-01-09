@@ -232,13 +232,13 @@ bibliotheque-app/
 - Commentaires et notes
 
 `
-
-
-
-
-```
 <img width="1366" height="728" alt="Accueil - Bibliothèque - Google Chrome 09_01_2026 23_51_29" src="https://github.com/user-attachments/assets/a2df9a63-d061-45d1-bb0b-e398a554369c" />
 
 <img width="1366" height="728" alt="Ajouter auteur - Google Chrome 09_01_2026 23_52_19" src="https://github.com/user-attachments/assets/0d225ea3-4327-4cbc-9338-ba10d4cdda3e" />
 
 
+
+
+
+
+```
